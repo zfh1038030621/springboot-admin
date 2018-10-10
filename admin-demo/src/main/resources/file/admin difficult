@@ -5,3 +5,30 @@ could 一定要注意spring boot 和Spring could的版本对应（本项目的sp
 2,client也要跟server版本一样是2.0及其以上的，同样要注意spring boot和spring could的对应关系
 3,客户端的配置好像要用yml，要不然不能用（后面要去证实，不是很确定）
 4,spring cloud 版本换Finchley之后要注意之前的一些jar名称要改，比如eurake
+
+
+client 步骤：
+1，加jar
+<dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+2，更换spring boot为2.0.0及以上
+3，更换spring could版本为Finchley.RELEASE
+4,配置文件加上以下基础配置
+spring.boot.admin.client.url: http://localhost:8863
+management.endpoints.web.exposure.include: '*'
+endpoint.health.show-details: ALWAYS
+#写入日志文件的目标。启用日志文件执行器端点(值先随便写，默认读取控制台日志)
+logging.file: eq
